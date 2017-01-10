@@ -1,0 +1,87 @@
+  <div>
+			<ul id="nav-mobile" className="side-nav">
+                <li><a href="#">Facebook
+                <i className="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+                </a></li>
+                <li><a href="#">Twitter
+                <i className="fa fa-twitter-square fa-2x"></i></a>
+                </li>
+                <li><a href="#">Google+
+                <i className="fa fa-google-plus-official fa-2x" aria-hidden="true"></i>
+                </a></li>
+                <li><a href="#">LinkedIn
+                <i className="fa fa-linkedin-square fa-2x" aria-hidden="true"></i>
+                </a></li>
+            </ul>
+      <a href="#" data-activates="nav-mobile" className="button-collapse"><i className="small material-icons">view_headline</i></a>
+    
+  <div className="section no-pad-bot" id="index-banner">
+    <div className="container">
+      <br /><br />
+      <h1 className="header center orange-text">Crodity </h1>
+
+      <div className="row">
+  <form className="col s12">
+    <div className="row">
+      <div className="input-field col s6">
+        <input placeholder="Placeholder" id="first_name" type="text" className="validate"/>
+        <label htmlFor="first_name">First Name</label>
+      </div>
+
+      <div className="input-field col s6">
+        <input id="last_name" type="text" className="validate"/> 
+        <label htmlFor="last_name">Last Name</label>
+      </div>
+    </div>
+    <div className="row">
+      <div className="input-field col s12">
+        <input id="password" type="password" className="validate"/>
+        <label htmlFor="password">Password</label>
+      </div>
+    </div>
+    <div className="row">
+      <div className="input-field col s12">
+        <input id="email" type="email" className="validate"/>
+        <label htmlFor="email" data-error="worng" data-success="right">Email</label>
+      </div>
+    </div>
+    <button className="btn waves-effect waver-light" type="submit" name="action"> Submit
+      <i className="material-icons right">send</i>
+    </button>
+   
+  </form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+          <FlatButton
+            backgroundColor="#a4c639"
+            hoverColor="#8AA62F"
+            icon={<span style={styles.title}> Crodity </span>}
+            style={styles.FlatButton}
+            />
+
+ <AppBar
+            style={styles.AppBar}
+            title={<span style={styles.title}> Crodity </span>}
+            onTitleTouchTap={handleTouchTap}
+            iconElementLeft={
+            
+
+
+
+             <TextField
+                                floatingLabelText="Email"
+                                id="text-field-controlled"
+                                value={this.state.value}
+                                onChange={this.handleChange.bind(this)}
+                                floatingLabelStyle={styleTextField.floatingLabelStyle}
+                                floatingLabelFocusStyle={styleTextField.floatingLabelFocusStyle}
+                                underlineStyle={styleTextField.underlineStyle}
+                                type='email'
+                                /><br />

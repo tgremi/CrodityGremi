@@ -1,0 +1,107 @@
+import { Meteor } from 'meteor/meteor';
+import React, { Component } from 'react';
+import LoginCrodityAccount from '../components/LoginCrodityAccount.jsx';
+
+
+const styles = {
+	buttonFb: {
+		margin: 12,
+		backgroundColor: '#3b5998'
+	},
+
+	buttonTt: {
+		margin: 12,
+		backgroundColor: '#1DA1F2'
+	},
+
+	hrStyle: {
+		margin: '0 30%',
+		border: '1px solid black',
+	}
+
+
+
+}
+
+class AccountsLogin extends Component {
+
+	loginWithFacebook() {
+
+		if (Meteor.isCordova) {
+			facebookConnectPlugin.login(['email'],
+				function () {
+					console.log('success');
+				},
+				function () {
+					console.log('error');
+				}
+			);
+		}
+		else {
+			Meteor.loginWithFacebook({ loginStyle: 'redirect' }, function (e) {
+				if (e)
+					console.log(e);
+			});
+		}
+	}
+
+	loginWithTwitter() {
+		Meteor.loginWithTwitter({ loginStyle: 'redirect' }, function (e) {
+		});
+	}
+
+	loginWithGoogle() {
+		Meteor.loginWithGoogle({ loginStyle: 'redirect' }, function (e) {
+			if (e)
+				console.log(e);
+		});
+	}
+
+	loginWithLinkedin() {
+		Meteor.loginWithLinkedin({ loginStyle: 'redirect' }, function (e) {
+			if (e)
+				console.log(e);
+		});
+	}
+
+	buttonText() {
+		if (this.props.text == 'login')
+			return ' Login With ';
+		if (this.props.text == 'connect')
+			return ' Connect With ';
+		else
+			return '';
+	}
+
+	render() {
+
+
+		return (
+
+			<div>
+
+				<div className="row ">
+					<p className="center-align">
+						<button style={styles.buttonFb} className="btn waves-effect waver-light" type="submit" name="action"
+							onClick={this.loginWithFacebook.bind(this)}>{this.buttonText()}Facebook
+          	<i className="fa fa-facebook-square left"></i>
+						</button>
+					</p>
+					<p className="center-align">
+						<button style={styles.buttonTt} className="btn waves-effect waver-light" type="submit" name="action"
+							onClick={this.loginWithTwitter.bind(this)}>{this.buttonText()}Twitter
+            <i className="fa fa-twitter-square left" aria-hidden="true"></i>
+						</button>
+					</p>
+					<hr style={styles.hrStyle} />
+	
+					<LoginCrodityAccount />
+					
+				</div>
+			</div>
+
+		);
+	}
+}
+
+export default AccountsLogin;
