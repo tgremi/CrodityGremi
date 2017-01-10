@@ -32,7 +32,7 @@ class LoginCrodityAccount extends Component {
                             </div>
                        
                     </div>
-                    <button style={styles.btn} className="btn waves-effect waver-light center"
+                    <button style={styles.btn} className="center-align btn waves-effect waver-light black-text"
                         type="submit" name="action"> Login
             <i className="black-text fa fa-sign-in left" aria-hidden="true"></i>
 

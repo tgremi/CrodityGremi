@@ -15,7 +15,7 @@ const styles = {
 	},
 
 	hrStyle: {
-		margin: '0 30%',
+		margin: '0 25%',
 		border: '1px solid black',
 	}
 
