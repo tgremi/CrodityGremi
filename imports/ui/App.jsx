@@ -15,7 +15,7 @@ const Routes = (
 			</Route>
 		</Route>
 		<Route path='home' component={Home} /> 
-		<Route path='login' component={Register} /> 
+		<Route path='register' component={Register} /> 
 	</Router>
 );
 
@@ -30,17 +30,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		phonon.options({
-			navigator: {
-					defaultPage: 'home',
-					animatePages: true,
-					enableBrowserBackButton: true
-			},
-			i18n: null // for this example, we do not use internationalization
-		});
-		var app = phonon.navigator();
-		app.on({page: 'home', preventClose: false, content: null});
-		app.start();
+		
 	}
 
 	render() {

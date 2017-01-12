@@ -89,12 +89,14 @@ class FeedContainer extends Component {
 	render() {
 		if(this.state.facebookFeed.length > 0 || this.state.twitterFeed.length > 0) {
 			return(
-				<FeedComposer facebookFeed={this.state.facebookFeed} twitterFeed={this.state.twitterFeed} />
+				<FeedComposer 
+				facebookFeed={this.state.facebookFeed} 
+				twitterFeed={this.state.twitterFeed} />
 			);
 		}
 		else {
 			return(
-				<div>Loading...</div>
+				<div> Loading ...</div>
 			);
 		}
 	}

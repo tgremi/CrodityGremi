@@ -1,8 +1,6 @@
 import React from 'react';
 import FeedService from './FeedService.jsx';
 import DateDisplay from './DateDisplay.jsx';
-
-
 import DatePicker from 'material-ui/DatePicker';
 
 const FeedUnit = ({data}) => {

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import AccountsLogin from '../mobile/AccountsLogin.jsx';
+import { Accounts } from 'meteor/accounts-base';
 
-function handleTouchTap() {
-    alert('onTouchTap triggered on the title component');
-}
+
 
 const styles = {
 
@@ -29,12 +29,55 @@ class Register extends Component {
 
     }
 
-    handleToggle() {
-        this.setState({ open: !this.state.open });
-    }
+    handleSubmit(event) {
+        event.preventDefault();
 
-    handleClose() {
-        this.setState({ open: false });
+        let options = {
+            username: this.refs.username.value,
+            email: this.refs.email.value,
+            password: this.refs.password.value,
+            passwordAgain: this.refs.passwordAgain.value,
+            firstName: this.refs.firstName.value,
+            lastName: this.refs.lastName.value
+        }
+
+
+        //Function for validation this password 
+
+        let isValidPassword = function (pwd, pwd2) {
+            if (pwd === pwd2 && pwd.length >= 6) {
+                return true;
+            }
+
+            if (pwd.length < 6) {
+                return alert("Minimo 6 caracteres para senha");
+            }
+            else {
+                return alert("As senhas digitadas estão diferentes");
+
+            }
+        }
+
+        if (isValidPassword(options.password, options.passwordAgain)) {
+            Accounts.createUser({
+                username: options.username,
+                email: options.email,
+                password: options.password,
+                firstName: options.firstName,
+                lastName: options.lastName
+
+            }, function (e) {
+                if (e) console.log(e);
+            },
+                console.log(options));
+            ReactDOM.findDOMNode(this.refs.email).value = '';
+            ReactDOM.findDOMNode(this.refs.username).value = '';
+            ReactDOM.findDOMNode(this.refs.firstName).value = '';
+            ReactDOM.findDOMNode(this.refs.lastName).value = '';
+            ReactDOM.findDOMNode(this.refs.password).value = '';
+            ReactDOM.findDOMNode(this.refs.passwordAgain).value = '';
+        }
+
     }
 
     componentDidMount() {
@@ -47,39 +90,47 @@ class Register extends Component {
         return (
 
             <div>
-                <div style={styles.img} className="center-align">
-                    <img className="responsive-img" src="/img/CrodityLogo.jpg" alt="Crodity Logo" />
+                <div className="row">
+                    <div className="col s12 m4 offset-m4">
+                        <div className="mobile-login" style={styles.img}>
+                            <img className="responsive-img" src="/img/CrodityLogo.jpg" alt="Crodity Logo" />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="container">
                     <div className="row">
-                        <form className="col s12">
+                        <form className="col s12" onSubmit={this.handleSubmit.bind(this)}>
                             <div className="row">
                                 <div className="input-field col s6">
-                                    <input id="first_name" type="text" className="validate" />
-                                    <label htmlFor="first_name">First Name</label>
+                                    <input ref="firstName" placeholder="First Name" id="first_name" type="text" className="validate" />
+
                                 </div>
 
                                 <div className="input-field col s6">
-                                    <input id="last_name" type="text" className="validate" />
-                                    <label htmlFor="last_name">Last Name</label>
+                                    <input ref="lastName" placeholder="Last Name" id="last_name" type="text" className="validate" />
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s6">
+                                    <input ref="password" placeholder="Password" id="password" type="password" className="validate" />
+                                </div>
+                                <div className="input-field col s6">
+                                    <input ref="passwordAgain" placeholder="Confirm Password" id="password" type="password" className="validate" />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
-                                    <input id="password" type="password" className="validate" />
-                                    <label htmlFor="password">Password</label>
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="input-field col s12">
-                                    <input id="email" type="email" className="validate" />
+                                    <input ref="email" id="email" type="email" className="validate" />
                                     <label htmlFor="email" data-error="wrong" data-success="right">Email</label>
                                 </div>
+                                <div className="input-field col s4">
+                                    <input ref="username" placeholder="Username" id="username" type="text" className="validate" />
+                                </div>
                             </div>
-                            <button style={styles.btn} className="btn waves-effect waver-light black-text center-align"
+                            <button style={styles.btn} className="btn waves-effect waver-light black-text"
                                 type="submit" name="action"> Submit
-           <i class="fa fa-arrow-right" aria-hidden="true"></i>
+           <i className="fa fa-hand-o-right right" aria-hidden="true"></i>
                             </button>
                         </form>
 

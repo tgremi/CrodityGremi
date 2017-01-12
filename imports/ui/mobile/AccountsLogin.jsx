@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
 import LoginCrodityAccount from '../components/LoginCrodityAccount.jsx';
-
+import { Link } from 'react-router';
 
 const styles = {
 	buttonFb: {
@@ -18,7 +18,6 @@ const styles = {
 		margin: '0 25%',
 		border: '1px solid black',
 	}
-
 
 
 }
@@ -79,8 +78,8 @@ class AccountsLogin extends Component {
 		return (
 
 			<div>
-
-				<div className="row ">
+				<br/>
+				<div className="container ">
 					<p className="center-align">
 						<button style={styles.buttonFb} className="btn waves-effect waver-light" type="submit" name="action"
 							onClick={this.loginWithFacebook.bind(this)}>{this.buttonText()}Facebook
@@ -93,9 +92,18 @@ class AccountsLogin extends Component {
             <i className="fa fa-twitter-square left" aria-hidden="true"></i>
 						</button>
 					</p>
+					<br />
 					<hr style={styles.hrStyle} />
-	
+					
 					<LoginCrodityAccount />
+				
+					<br />
+					<p className="center-align">
+						<Link to="/register">
+							<button className="white black-text col s12 m6 offset-m3" type="submit" name="action">
+								CRIAR NOVA CONTA</button>
+						</Link>
+					</p>
 					
 				</div>
 			</div>
