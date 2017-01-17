@@ -11,33 +11,38 @@ const styles = {
 
 class LoginCrodityAccount extends Component {
 
-    loginWithCrodity() {
-
+  
+     handleSubmit(event) {  
         event.preventDefault();
-
-        let loggin = {
-            user: this.refs.user,
-            pass: this.refs.password
+        
+        let login = {
+            user: this.refs.user.value,
+            pass: this.refs.password.value
         }
 
-        Meteor.loginWithPassword(loggin.user, loggin.pass,
+        Meteor.loginWithPassword(login.user, login.pass,
             function (e) {
-                console.log(e);
+                if(e) console.log(e);
+                else console.log('Login Successful');
             });
-            
-        if (Meteor.loggingIn()) {
-            console.log('Sucesso');
-        } else console.log('Falha')
 
+        // if (Meteor.loggingIn()) {
+        //     console.log('Sucesso');
+        // } else console.log('Falha');
+
+       
+       
 
     }
+
+
 
     render() {
 
         return (
             <div className="container">
 
-                <form className="col s12">
+                <form className="col s12" onSubmit={this.handleSubmit.bind(this)}>
                     <div className="row">
 
                         <div className="input-field col s12 m6 offset-m3">
@@ -55,7 +60,7 @@ class LoginCrodityAccount extends Component {
                     </div>
                     <p className="center-align">
                         <button style={styles.btn} className="center-align btn waves-effect waver-light black-text"
-                            type="submit" name="action" onClick={this.loginWithCrodity.bind(this)}> Login
+                            type="submit" name="action"> Login
             <i className="black-text fa fa-sign-in left" aria-hidden="true"></i>
                         </button>
                     </p>

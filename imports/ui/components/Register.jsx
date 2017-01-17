@@ -32,6 +32,8 @@ class Register extends Component {
     handleSubmit(event) {
         event.preventDefault();
 
+        let reg = /(((?=.*\d)(?=.*[a-zA-Z])(?=.*[@#$%])[a-zA-Z0-9@$$%]{6,10}))/;
+
         let options = {
             username: this.refs.username.value,
             email: this.refs.email.value,
@@ -44,14 +46,19 @@ class Register extends Component {
 
         //Function for validation this password 
 
+
+
         let isValidPassword = function (pwd, pwd2) {
             if (pwd === pwd2 && pwd.length >= 6) {
-                return true;
+                if (!reg.exec(pwd)) {
+                    return alert("A senha deve conter ao minimo 1 letra, 1 numero e 1 caracter especial");
+                }else return true;
             }
 
             if (pwd.length < 6) {
-                return alert("Minimo 6 caracteres para senha");
+                return alert("Minimo 6 caracteres para senha ");
             }
+
             else {
                 return alert("As senhas digitadas estão diferentes");
 
@@ -130,7 +137,7 @@ class Register extends Component {
                             </div>
                             <button style={styles.btn} className="btn waves-effect waver-light black-text"
                                 type="submit" name="action"> Submit
-           <i className="fa fa-hand-o-right right" aria-hidden="true"></i>
+           <i className="material-icons right" aria-hidden="true">send</i>
                             </button>
                         </form>
 

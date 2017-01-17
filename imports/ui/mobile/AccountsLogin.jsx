@@ -100,7 +100,7 @@ class AccountsLogin extends Component {
 					<br />
 					<p className="center-align">
 						<Link to="/register">
-							<button className="white black-text col s12 m6 offset-m3" type="submit" name="action">
+							<button className="white btn-flat black-text col s12 m6 offset-m3" type="submit" name="action">
 								CRIAR NOVA CONTA</button>
 						</Link>
 					</p>

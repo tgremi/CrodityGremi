@@ -85,3 +85,7 @@
                                 underlineStyle={styleTextField.underlineStyle}
                                 type='email'
                                 /><br />
+
+
+
+                                <textarea id="textarea1" className="materialize-textarea"></textarea>
